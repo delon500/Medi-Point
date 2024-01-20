@@ -1,18 +1,5 @@
 <?php
- 
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "Medi-point";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'DB_connect';
 
 $receivedData = trim($_GET['Date']);
 
@@ -31,8 +18,7 @@ if(isset($receivedData)){
 			
                 $time=array('time'=>$t['appointment_time']);
                 $dataArray["times"][]=$time;
-		
-			
+
 			}
 		
     }else{

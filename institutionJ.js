@@ -325,12 +325,20 @@ function addappointment(){
   
   }
 
-  function validateSouthAfricanPhoneNumber(phoneNumber) {
+// removes Whitespace in a string
+function removeSpaces(inputString) {
+    var stringWithoutSpaces = inputString.replace(/\s/g, "");
+    return stringWithoutSpaces;
+}
+
+function validateSouthAfricanPhoneNumber(phoneNumber) {
+    var cleanedPhoneNumber = removeSpaces(phoneNumber);
+
     // Define a regular expression for South African phone numbers
-    var phoneRegex = /^(?:\+27|0)(?:(10|11|12|13|14|15|16|17|18|19|21|22|23|24|25|26|27|28|29|31|32|33|34|35|36|37|38|39|41|42|43|44|45|46|47|48|49|51|52|53|54|56|57|58|59|61|62|63|64|65|66|67|68|69|71|72|73|74|75|76|77|78|79|81|82|83|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99)\d{7})$/;
+    var phoneRegex = /^(\+27|0)[0-9]{9}$|^\+27\s[0-9]{2}\s[0-9]{3}\s[0-9]{4}$/;
 
     // Test the phone number against the regular expression
-    return phoneRegex.test(phoneNumber);
+    return phoneRegex.test(cleanedPhoneNumber);
 }
 
 function validateEmail(email) {
