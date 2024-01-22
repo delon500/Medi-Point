@@ -1,5 +1,5 @@
 <?php
-include 'DB_connect';
+include 'DB_connect.php';
 
 $receivedData = trim($_GET['Date']);
 
@@ -18,7 +18,8 @@ if(isset($receivedData)){
 			
                 $time=array('time'=>$t['appointment_time']);
                 $dataArray["times"][]=$time;
-
+		
+			
 			}
 		
     }else{
